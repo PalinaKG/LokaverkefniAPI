@@ -1,1 +1,1 @@
-web: gunicorn MotionSickness.wsgi
+web: gunicorn MotionSickness1.wsgi
