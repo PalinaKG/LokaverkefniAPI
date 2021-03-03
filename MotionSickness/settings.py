@@ -182,5 +182,8 @@ USE_TZ = True
 
 
 
-ALLOWED_HOSTS=['*']
+ALLOWED_HOSTS=[
+    'localhost/3000',
+    'motion-sickness.herokuapp.com/'
+    ]
 CORS_ORIGIN_ALLOW_ALL = True
