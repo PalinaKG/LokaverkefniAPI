@@ -133,12 +133,14 @@ WSGI_APPLICATION = 'MotionSickness.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+DB_HOST = config('DJANGO_DB_HOST', default='localhost')
 
 DATABASES = {
     'default' : {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'motion_sickness',
     'USER': 'username',
+    'HOST': DB_HOST,
     'PASSWORD': 'password'
 }}
 
