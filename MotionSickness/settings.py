@@ -135,27 +135,27 @@ WSGI_APPLICATION = 'MotionSickness.wsgi.application'
 # }
 
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
-
-
-
-# DB_HOST = config('DJANGO_DB_HOST', default='localhost')
-
 # DATABASES = {
-#     'default' : {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': 'motion_sickness',
-#     'USER': 'username',
-#     'HOST': DB_HOST,
-#     'PASSWORD': 'password'
-# }}
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
 
-# db_from_env = dj_database_url.config(conn_max_age=600)
-# DATABASES['default'].update(db_from_env)
+
+
+DB_HOST = config('DJANGO_DB_HOST', default='localhost')
+
+DATABASES = {
+    'default' : {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'motion_sickness',
+    'USER': 'username',
+    'HOST': DB_HOST,
+    'PASSWORD': 'password'
+}}
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
