@@ -30,3 +30,5 @@ virtualenv==20.4.2
 whitenoise==5.2.0
 wrapt==1.12.1
 yarn==0.0.9
+
+dj-database-url==0.3.0

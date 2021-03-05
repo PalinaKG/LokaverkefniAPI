@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
-
 from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -130,16 +130,25 @@ WSGI_APPLICATION = 'MotionSickness.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DB_HOST = config('DJANGO_DB_HOST', default='localhost')
+
 
 DATABASES = {
-    'default' : {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'motion_sickness',
-    'USER': 'username',
-    'HOST': DB_HOST,
-    'PASSWORD': 'password'
-}}
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
+
+
+# DB_HOST = config('DJANGO_DB_HOST', default='localhost')
+
+# DATABASES = {
+#     'default' : {
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': 'motion_sickness',
+#     'USER': 'username',
+#     'HOST': DB_HOST,
+#     'PASSWORD': 'password'
+# }}
 
 
 # Password validation
