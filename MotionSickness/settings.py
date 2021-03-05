@@ -65,9 +65,6 @@ SECRET_KEY = config('SECRET_KEY')
 
 
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
