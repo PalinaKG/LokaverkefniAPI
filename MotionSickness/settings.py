@@ -143,18 +143,18 @@ WSGI_APPLICATION = 'MotionSickness.wsgi.application'
 
 
 
-DB_HOST = config('DJANGO_DB_HOST', default='localhost')
+#DB_HOST = config('DJANGO_DB_HOST', default='localhost')
 
 DATABASES = {
     'default' : {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'motion_sickness',
     'USER': 'username',
-    'HOST': DB_HOST,
+    'HOST': 'localhost',
     'PASSWORD': 'password'
 }}
 
-db_from_env = dj_database_url.config(conn_max_age=600)
+db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
 
