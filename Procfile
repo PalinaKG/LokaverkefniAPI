@@ -1,1 +1,1 @@
-web: gunicorn MotionSickness.wsgi
+web: gunicorn MotionSickness.wsgi --log-file -

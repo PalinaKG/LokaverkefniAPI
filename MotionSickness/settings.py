@@ -40,9 +40,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
 
 
 
@@ -81,6 +84,7 @@ INSTALLED_APPS = [
     'rest_auth',
     'users',
     'corsheaders',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -95,7 +99,6 @@ MIDDLEWARE = [
     #'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -132,23 +135,27 @@ WSGI_APPLICATION = 'MotionSickness.wsgi.application'
 # }
 
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
-
-
-# DB_HOST = config('DJANGO_DB_HOST', default='localhost')
-
 # DATABASES = {
-#     'default' : {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': 'motion_sickness',
-#     'USER': 'username',
-#     'HOST': DB_HOST,
-#     'PASSWORD': 'password'
-# }}
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
+
+
+
+DB_HOST = config('DJANGO_DB_HOST', default='localhost')
+
+DATABASES = {
+    'default' : {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'motion_sickness',
+    'USER': 'username',
+    'HOST': DB_HOST,
+    'PASSWORD': 'password'
+}}
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
