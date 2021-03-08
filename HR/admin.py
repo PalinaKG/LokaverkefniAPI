@@ -4,4 +4,4 @@ from django.contrib import admin
 
 @admin.register(hr)
 class hrAdmin(admin.ModelAdmin):
-    list_display = ['hrid', 'subjectid', 'bpm', 'time']
+    list_display = ['hrid', 'subjectid', 'bpm', 'interval']

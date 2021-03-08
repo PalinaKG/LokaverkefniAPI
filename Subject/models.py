@@ -16,7 +16,7 @@ class subject(models.Model):
             MinValueValidator(0)
         ])
     birthyear = models.IntegerField(validators=[
-            MaxValueValidator(2021),
+            MaxValueValidator(2020),
         ])
 
 

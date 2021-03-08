@@ -9,7 +9,7 @@ class hrModel(ListAPIView):
     queryset = hr.objects.all()
     serializer_class = hrSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['hrid', 'subjectid', 'bpm', 'time']
+    filterset_fields = ['hrid', 'subjectid', 'bpm', 'interval']
     
 
     def get_queryset(self):

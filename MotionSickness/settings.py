@@ -91,8 +91,8 @@ INSTALLED_APPS = [
     'msgolden',
     'hr',
     'generalinfo',
-    #'emg',
-    #'eeg',
+    'emg',
+    'eeg',
     #'corsheaders',
     'django_filters',
     #'djangorestframework-filters',
@@ -154,13 +154,15 @@ WSGI_APPLICATION = 'MotionSickness.wsgi.application'
 #DB_HOST = config('DJANGO_DB_HOST', default='localhost')
 
 DATABASES = {
-    'default' : {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'motion_sickness',
-    'USER': 'username',
-    'HOST': 'localhost',
-    'PASSWORD': 'password'
-}}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'msfdanjl',
+        'USER': 'msfdanjl',
+        'PASSWORD': 'kUM09GkSNYUVmXCDaGAOKpFSJeCKKoQ3',
+        'HOST': 'ziggy.db.elephantsql.com',
+        'PORT': '5432'
+    }
+}
 
 # DATABASES = {
 #     'default': dj_database_url.config(
