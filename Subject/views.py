@@ -1,15 +1,34 @@
 from django.shortcuts import render
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from Subject.apps import SubjectConfig
-
+from django.views import generic
+from .serializers import subjectSerializer
+from .models import subject
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import ListAPIView
+from django_filters.rest_framework import DjangoFilterBackend
 
-class SubjectModel(APIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-    pass
+class subjectModel(ListAPIView):
+    # authentication_classes = [TokenAuthentication]
+    # permission_classes = [IsAuthenticated]
+    queryset = subject.objects.all()
+    serializer_class = subjectSerializer
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = {
+        'subjectid': ['gte', 'lte', 'exact'],
+        'height': ['gte', 'lte', 'exact'],
+        'gender': ['gte', 'lte', 'exact'],
+        'handedness': ['gte', 'lte', 'exact'],
+        'birthyear': ['gte', 'lte', 'exact']
+    }
+    
+    
+
+    def get_queryset(self):
+        #user = self.request.user
+        return subject.objects.all()
+
+
+    
+
+
 # Create your views here.

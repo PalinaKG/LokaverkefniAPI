@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
-import dj_database_url
+#import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,8 +44,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# MEDIA_URL = '/media/'
 
 
 
@@ -69,6 +69,9 @@ SECRET_KEY = config('SECRET_KEY')
 
 
 # Application definition
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -78,12 +81,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
-    'Subject',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
     'users',
-    'corsheaders',
+    'subject',
+    'spo2',
+    'nausea',
+    'msgolden',
+    'hr',
+    'generalinfo',
+    #'emg',
+    #'eeg',
+    #'corsheaders',
+    'django_filters',
+    #'djangorestframework-filters',
     'whitenoise.runserver_nostatic',
 ]
 
@@ -135,29 +147,31 @@ WSGI_APPLICATION = 'MotionSickness.wsgi.application'
 # }
 
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=config('DATABASE_URL')
-#     )
-# }
+
 
 
 
 #DB_HOST = config('DJANGO_DB_HOST', default='localhost')
 
-# DATABASES = {
-#     'default' : {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': 'motion_sickness',
-#     'USER': 'username',
-#     'HOST': 'localhost',
-#     'PASSWORD': 'password'
-# }}
-DATABASES = {'default': {}}
+DATABASES = {
+    'default' : {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'motion_sickness',
+    'USER': 'username',
+    'HOST': 'localhost',
+    'PASSWORD': 'password'
+}}
 
-db_from_env = dj_database_url.config()
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
+#DATABASES = {'default': {}}
+
+# db_from_env = dj_database_url.config()
 # DATABASES['default'].update(db_from_env)
-DATABASES.update(default=db_from_env)
+# DATABASES.update(default=db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
