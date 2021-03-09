@@ -12,4 +12,3 @@ class eeg(models.Model):
     low_gamma = models.DecimalField(max_digits=15, decimal_places=8)
     delta = models.DecimalField(max_digits=15, decimal_places=8)
     interval = models.IntegerField(validators=[MaxValueValidator(6), MinValueValidator(0)])
-    sensor = models.IntegerField(validators=[MaxValueValidator(6), MinValueValidator(0)])

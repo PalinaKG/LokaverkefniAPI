@@ -9,7 +9,7 @@ class eegModel(ListAPIView):
     queryset = eeg.objects.all()
     serializer_class = eegSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['eegid', 'subjectid', 'alpha', 'beta', 'theta', 'low_gamma', 'delta', 'interval', 'sensor']
+    filterset_fields = ['eegid', 'subjectid', 'alpha', 'beta', 'theta', 'low_gamma', 'delta', 'interval']
 
     def get_queryset(self):
         #user = self.request.user
