@@ -44,8 +44,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-# MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-# MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
 
 
 
@@ -93,11 +93,13 @@ INSTALLED_APPS = [
     'generalinfo',
     'emg',
     'eeg',
-    #'corsheaders',
+    'csvs',
+    'corsheaders',
     'django_filters',
     #'djangorestframework-filters',
     'whitenoise.runserver_nostatic',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -108,6 +110,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     #'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
@@ -120,7 +123,8 @@ ROOT_URLCONF = 'MotionSickness.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        #'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -207,11 +211,30 @@ USE_L10N = True
 USE_TZ = True
 
 
-
+CORS_ALLOW_METHOD = [
+    'POST',
+    'GET'
+]
 
 
 
 ALLOWED_HOSTS=[
+    'https://localhost:3000',
+    'https://localhost:3000/api/subject',
+    'localhost',
     '*',
     ]
 CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+    'https://localhost:3000',
+)
+
+# CORS_ALLOW_HEADERS = (
+#     'xsrfheadername',
+#     'xsrfcookiename',
+#     'content-type',
+#     'X-CSRFTOKEN',
+# )
+
+# CSRF_COOKIE_NAME = 'X-CSRFTOKEN',

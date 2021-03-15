@@ -17,5 +17,8 @@ Including another URLconf
 from django.urls import path
 import subject.views as views
 urlpatterns = [
+    #path('/upload-csv', views.subject_upload),
+    path('/add/', views.subjectModel.add_sub),
     path('/', views.subjectModel.as_view()),
+    
 ]

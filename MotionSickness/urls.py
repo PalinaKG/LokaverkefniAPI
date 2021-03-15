@@ -15,10 +15,13 @@ Including another URLconf
 # """
 from django.contrib import admin
 from django.urls import path, include
+from .import_data import import_data
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('api/', include('subject.urls')),
+    #path('',include('csvs.urls', namespace='csvs')),
+    path('api/import_data/', import_data),
     path('api/auth/', include('users.urls')),
     path('api/subject', include('subject.urls')),
     path('api/spo2', include('spo2.urls')),
